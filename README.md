@@ -1,8 +1,9 @@
 thesis-template
 ===============
 
-LaTeX-Vorlage für Bachelor/Master-Thesis an der FH-Wedel
-(Betreuer Ulrich Hoffmann)
+LaTeX-Vorlage für Seminararbeiten an der FH Wedel.
+
+Zitierweise IEEE.
 
 PDF erzeugen:
 
@@ -11,7 +12,4 @@ PDF erzeugen:
     % biber thesis_main         # optional for bibliography
     % pdflatex thesis_main.tex  # several times in order to resolve open references
     
-Oder mit Overleaf bearbeiten und compilieren lassen.
-
-fork & enjoy
-
+Oder mit Overleaf bearbeiten und compilieren lassen
