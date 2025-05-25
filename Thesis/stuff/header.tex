@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%  Document info  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\projname}{Bachelor Thesis}
-\newcommand{\titel}{Analyse der Zeitersparnis der Verwendung eines Templates bei der Erstellung einer Bachelor Thesis}
+\newcommand{\titel}{Is Cybersecurity Research Missing a Trick? Integrating Insights From the  Psychology of Habit Into Research and Practice}
 \newcommand{\untertitel}{}
-\newcommand{\thesisname}{Bachelor Thesis}
-\newcommand{\Datum}{23. Februar 20XX}
-\newcommand{\authorname}{Maximilian Mustermann}
+\newcommand{\thesisname}{Term Paper}
+\newcommand{\Datum}{30. May 2025}
+\newcommand{\authorname}{Yanik Luis Recke}
 %%%%%%%%%%%%%%%%%%%  Document info  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,13 +14,17 @@
 \usepackage{url}
 \usepackage{wrapfig}
 \usepackage{xcolor}
-\usepackage[font=footnotesize]{caption}
+\usepackage[font=footnotesize] {caption}
 \setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{10pt}
 \usepackage{listings}
 \usepackage{makecell}
 \usepackage{array}
-\usepackage[ngerman]{varioref}
+\usepackage[english]{varioref}
+
+\usepackage[table]{xcolor}
+
+\usepackage{xpatch}
 
 %\usepackage{scrextend}
 \newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
@@ -48,8 +52,8 @@
 ]{geometry}
             
 \usepackage[utf8]{inputenc}         % Input encoding (allow direct use of special characters like "ä")
-%\usepackage[english]{babel}
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
+%\usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[printonlyused]{acronym} % list of acronyms and abbreviations
 \usepackage[automark]{scrlayer-scrpage} 	 % Schickerer Satzspiegel mit KOMA-Script
@@ -64,12 +68,14 @@
 \usepackage{longtable}
 \usepackage[
     backend=biber,
-    style=alphabetic,
+    style=ieee,
     natbib=true,
-    sorting=nty 
+    sorting=none,
+    urldate=long
 ]{biblatex}
 \addbibresource{sources.bib}
-% COdeblock stuff
+
+
 \usepackage{listings}
 \usepackage{csquotes}
 
@@ -90,6 +96,17 @@
 \else
 \fi
 
+\xpatchbibdriver{online}
+  {\printtext[parens]{\usebibmacro{date}}}
+  {\iffieldundef{year}
+    {}
+    {\printtext[parens]{\usebibmacro{date}}}}
+  {}
+  {\typeout{There was an error patching biblatex-ieee (specifically, ieee.bbx's @online driver)}
+}
+
+\xpatchbibdriver{online}{\usebibmacro{finentry}}{\def\finentrypunct{}\usebibmacro{finentry}}{}{\fail}
+\DefineBibliographyStrings{english}{url = [Online]\adddot\addspace Available}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Listings (Code Blocks) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -327,7 +344,42 @@
         {\ \ }{{\ }}1
 }
 
-\lstset{aboveskip=0.25cm,belowskip=0pt}
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b,
+   aboveskip=0.5cm,
+   belowskip=0pt,
+   xleftmargin=.2\textwidth, 
+}
+
+\lstdefinelanguage{Vue}{
+    language={html},
+    morekeywords={template, ref, import, const}
+}
 
 \renewcommand\theadfont{}
-

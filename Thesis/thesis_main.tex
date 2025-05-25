@@ -19,7 +19,7 @@
 
 % Titelseite
 \newgeometry{left=3cm,right=2cm,top=2.0cm,bottom=2.0cm}
-\include{stuff/titelseite}
+\include{stuff/Titlepage}
 \restoregeometry
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,18 +39,17 @@
 
 \begin{onehalfspace}
 \include{kapitel/Abstract}
-\include{kapitel/Einleitung}
-\include{kapitel/Grundlagen}
-\include{kapitel/Hauptkapitel_1}
-\include{kapitel/Hauptkapitel_2}
-\include{kapitel/Zusammenfassung}
-\include{kapitel/Anhang}
+\include{kapitel/Introduction}
+\include{kapitel/Main_chapter_1}
+\include{kapitel/Conclusion}
 \end{onehalfspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \printbibliography{} % create with BibTeX, gives "chapter without number" warning in log
 
-\include{stuff/footer}
+
+% INCLUDE FOR Statuory Declaration
+%\include{stuff/footer}
 
 \end{document}
